@@ -20,6 +20,8 @@ const App = () => {
   const frameProcessor = useFrameProcessor(frame => {
     'worklet';
     console.log(frame);
+    const test = __getColorPalette(frame)
+    console.log(test);
   }, []);
 
   useEffect(() => {
