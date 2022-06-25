@@ -3,7 +3,6 @@ package com.colordetector;
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
@@ -50,10 +49,10 @@ public class PaletteFrameProcessorPlugin extends FrameProcessorPlugin {
     private String rgbIntToHexString(int rgb) {
         return String.format("#%06X", (0xFFFFFF & rgb));
     }
+    //Context context
 
     PaletteFrameProcessorPlugin(Context context) {
         super("getColorPalette");
-        context = context;
         // yuvToRgbConverter = new YuvToRgbConverter(context);
     }
 }

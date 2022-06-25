@@ -10,6 +10,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.colordetector.newarchitecture.MainApplicationReactNativeHost;
+import com.mrousavy.camera.CameraPackage;
+import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -28,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+            // packages.add(new CameraPackage());
           return packages;
         }
 
@@ -56,6 +60,7 @@ public class MainApplication extends Application implements ReactApplication {
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    FrameProcessorPlugin.register(new PaletteFrameProcessorPlugin(context));
   }
 
   /**

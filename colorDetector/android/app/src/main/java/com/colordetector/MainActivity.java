@@ -46,16 +46,4 @@ public class MainActivity extends ReactActivity {
       return reactRootView;
     }
   }
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    Window w = getWindow();
-    w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-    w.getDecorView().setSystemUiVisibility(
-        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-
-    super.onCreate(null);
-
-    FrameProcessorPlugin.register(new PaletteFrameProcessorPlugin(getApplicationContext()));
-  }
 }
