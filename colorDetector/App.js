@@ -1,26 +1,14 @@
 import React, {useEffect} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {
   Camera,
   useCameraDevices,
   useFrameProcessor,
 } from 'react-native-vision-camera';
-import {useSharedValue} from 'react-native-reanimated';
 
 const App = () => {
   const devices = useCameraDevices('wide-angle-camera');
   const device = devices.back;
-  const DEFAULT_COLOR = '#000000';
-  const firstColor = useSharedValue(DEFAULT_COLOR);
-  const secondColor = useSharedValue(DEFAULT_COLOR);
-  const thirdColor = useSharedValue(DEFAULT_COLOR);
-  const fourthColor = useSharedValue(DEFAULT_COLOR);
-  const fifthColor = useSharedValue(DEFAULT_COLOR);
 
   const getPermissions = async () => {
     const newCameraPermission = await Camera.requestCameraPermission();
@@ -31,9 +19,7 @@ const App = () => {
 
   const frameProcessor = useFrameProcessor(frame => {
     'worklet';
-    // firstColor.value = frame
-    // const test = ColorProcessor(frame);
-    // console.log(test);
+    console.log(frame);
   }, []);
 
   useEffect(() => {
@@ -54,8 +40,8 @@ const App = () => {
           style={styles.cameraContainer}
           device={device}
           isActive={true}
-          // frameProcessor={frameProcessor}
-          // frameProcessorFps={1}
+          frameProcessor={frameProcessor}
+          frameProcessorFps={1}
         />
         <View style={styles.infoContainer}></View>
       </SafeAreaView>
