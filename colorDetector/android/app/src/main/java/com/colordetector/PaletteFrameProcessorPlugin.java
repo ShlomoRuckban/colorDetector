@@ -3,6 +3,8 @@ package com.colordetector;
 import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+// import android.graphics.ImageFormat;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
@@ -11,10 +13,10 @@ import androidx.palette.graphics.Palette;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin;
 
-import com.google.android.renderscript.Toolkit;
+ import com.colordetector.utils.YuvToRgbConverter;
 
 public class PaletteFrameProcessorPlugin extends FrameProcessorPlugin {
-    // private final YuvToRgbConverter yuvToRgbConverter;
+    private final YuvToRgbConverter yuvToRgbConverter;
     @SuppressWarnings("FieldCanBeLocal")
     private static final int DEFAULT_COLOR = Color.BLACK;
 
@@ -28,7 +30,7 @@ public class PaletteFrameProcessorPlugin extends FrameProcessorPlugin {
             return null;
         }
         Bitmap bitmap = Bitmap.createBitmap(image.getWidth(), image.getHeight(), Bitmap.Config.ARGB_8888);
-        // yuvToRgbConverter.yuvToRgb(image, bitmap);
+        yuvToRgbConverter.yuvToRgb(image, bitmap);
 
         Palette.Builder builder = new Palette.Builder(bitmap);
         Palette palette = builder.generate();
@@ -53,6 +55,6 @@ public class PaletteFrameProcessorPlugin extends FrameProcessorPlugin {
 
     PaletteFrameProcessorPlugin(Context context) {
         super("getColorPalette");
-        // yuvToRgbConverter = new YuvToRgbConverter(context);
+        yuvToRgbConverter = new YuvToRgbConverter(context);
     }
 }
