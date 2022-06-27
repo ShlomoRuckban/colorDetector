@@ -16,7 +16,14 @@ import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 =======
 >>>>>>> shlomo
 import React, {useEffect, useState, useMemo} from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  PermissionsAndroid,
+} from 'react-native';
 import ColorTile from './components/ColorTile';
 import {useSharedValue} from 'react-native-reanimated';
 <<<<<<< HEAD
@@ -43,6 +50,7 @@ const DEFAULT_COLOR = '#000000';
 >>>>>>> shlomo
 
 const App = () => {
+  const [isAllowed, setIsAllowed] = useState(false);
   const [frameProcessorFps, setFrameProcessorFps] = useState(3);
   const firstColor = useSharedValue(DEFAULT_COLOR);
   const secondColor = useSharedValue(DEFAULT_COLOR);
@@ -63,6 +71,8 @@ const App = () => {
   const getPermissions = async () => {
     const newCameraPermission = await Camera.requestCameraPermission();
     const cameraPermission = await Camera.getCameraPermissionStatus();
+
+    if (cameraPermission === 'authorized') setIsAllowed(true);
 
     console.log(newCameraPermission, cameraPermission);
   };
@@ -96,13 +106,15 @@ const App = () => {
           array.search(/population/i) +
             12 +
             array.slice(array.search(/population/i) + 12).search(']'),
-        ) ,
-        rgb: array.substring(
-          array.search(/rgb/i) + 5,
-          array.search(/rgb/i) +
-            5 +
-            array.slice(array.search(/rgb/i) + 5).search(']'),
         ),
+        rgb:
+          '#' +
+          array.substring(
+            array.search(/rgb/i) + 8,
+            array.search(/rgb/i) +
+              5 +
+              array.slice(array.search(/rgb/i) + 5).search(']'),
+          ),
       });
       array = array.slice(
         array.search(/population/i) +
@@ -112,7 +124,7 @@ const App = () => {
     }
 
     colors = colors.filter(a => {
-      if ((a.rgb.length = 9)) return a;
+      if ((a.rgb.length = 7)) return a;
     });
 
     colors = colors
@@ -120,9 +132,11 @@ const App = () => {
         return b.pop - a.pop;
       })
       .slice(0, 5);
-      
+
     if (colors.length < 5) return;
+    console.log(colors)
     firstColor.value = colors[0].rgb;
+<<<<<<< HEAD
     secondColor.value =
       colors[1].rgb === undefined ? DEFAULT_COLOR : colors[1].rgb;
     thirdColor.value =
@@ -134,6 +148,12 @@ const App = () => {
 <<<<<<< HEAD
 >>>>>>> shlomo
 =======
+>>>>>>> shlomo
+=======
+    secondColor.value = colors[1].rgb;
+    thirdColor.value = colors[2].rgb;
+    fourthColor.value = colors[3].rgb;
+    fifthColor.value = colors[4].rgb;
 >>>>>>> shlomo
   }, []);
 
@@ -161,6 +181,7 @@ const App = () => {
   else
     return (
       <SafeAreaView style={styles.appContainer}>
+<<<<<<< HEAD
         <Camera
           style={styles.cameraContainer}
           device={device}
@@ -212,6 +233,62 @@ const App = () => {
             animationDuration={colorAnimationDuration}
           />
         </View>
+=======
+        {isAllowed && (
+          <>
+            <Camera
+              style={styles.cameraContainer}
+              device={device}
+              isActive={true}
+              frameProcessor={frameProcessor}
+              frameProcessorFps={3}
+              onFrameProcessorPerformanceSuggestionAvailable={
+                onFrameProcessorPerformanceSuggestionAvailable
+              }
+            />
+            <View style={styles.infoContainer}>
+              <ColorTile
+                name="1st"
+                color={firstColor}
+                animationDuration={colorAnimationDuration}
+              />
+              <ColorTile
+                name="2nd"
+                color={secondColor}
+                animationDuration={colorAnimationDuration}
+              />
+              <ColorTile
+                name="3rd"
+                color={thirdColor}
+                animationDuration={colorAnimationDuration}
+              />
+              <ColorTile
+                name="4th"
+                color={fourthColor}
+                animationDuration={colorAnimationDuration}
+              />
+              <ColorTile
+                name="5th"
+                color={fifthColor}
+                animationDuration={colorAnimationDuration}
+              />
+            </View>
+          </>
+        )}
+        {!isAllowed && (
+          <>
+            <View>
+              <Text style={{textAlign: 'center', marginTop: 50}}>
+                Please Grant Permissions
+              </Text>
+              <Text style={{textAlign: 'center', marginTop: 50}}>
+                Go to Settings and grant permissions to use camera and restart
+                the app.
+              </Text>
+            </View>
+          </>
+        )}
+>>>>>>> shlomo
       </SafeAreaView>
     );
 };
