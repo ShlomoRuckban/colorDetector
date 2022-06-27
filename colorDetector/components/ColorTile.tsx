@@ -5,7 +5,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 import AnimateableText from 'react-native-animateable-text';
 import {StyleSheet, Text, ViewStyle} from 'react-native';
-import {useAnimatedColor} from '../utils/useAnimatedColor';
+import {useAnimatedColor} from '../utils/useAnimatedColor'; 
 
 type ColorTileProps = {
   name: string;

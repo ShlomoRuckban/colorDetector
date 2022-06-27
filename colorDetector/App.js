@@ -43,7 +43,7 @@ const App = () => {
           array.search(/population/i) +
             12 +
             array.slice(array.search(/population/i) + 12).search(']'),
-        ),
+        ) ,
         rgb: array.substring(
           array.search(/rgb/i) + 5,
           array.search(/rgb/i) +
