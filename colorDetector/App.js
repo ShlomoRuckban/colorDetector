@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import React, {useEffect} from 'react';
-<<<<<<< HEAD
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,12 +7,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-=======
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
->>>>>>> shlomo
-=======
-=======
->>>>>>> shlomo
 import React, {useEffect, useState, useMemo} from 'react';
 import {
   SafeAreaView,
@@ -26,28 +19,14 @@ import {
 } from 'react-native';
 import ColorTile from './components/ColorTile';
 import {useSharedValue} from 'react-native-reanimated';
-<<<<<<< HEAD
->>>>>>> shlomo
-=======
->>>>>>> shlomo
 import {
   Camera,
   useCameraDevices,
   useFrameProcessor,
   onFrameProcessorPerformanceSuggestionAvailable,
 } from 'react-native-vision-camera';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {useSharedValue} from 'react-native-reanimated'
-=======
->>>>>>> shlomo
-=======
 const DEFAULT_COLOR = '#000000';
->>>>>>> shlomo
-=======
-const DEFAULT_COLOR = '#000000';
->>>>>>> shlomo
 
 const App = () => {
   const [isAllowed, setIsAllowed] = useState(false);
@@ -59,14 +38,6 @@ const App = () => {
   const fifthColor = useSharedValue(DEFAULT_COLOR);
   const devices = useCameraDevices('wide-angle-camera');
   const device = devices.back;
-<<<<<<< HEAD
-  const DEFAULT_COLOR = '#000000';
-  const primaryColor = useSharedValue(DEFAULT_COLOR);
-  const secondaryColor = useSharedValue(DEFAULT_COLOR);
-  const backgroundColor = useSharedValue(DEFAULT_COLOR);
-  const detailColor = useSharedValue(DEFAULT_COLOR);
-=======
->>>>>>> shlomo
 
   const getPermissions = async () => {
     const newCameraPermission = await Camera.requestCameraPermission();
@@ -84,19 +55,6 @@ const App = () => {
 
   const frameProcessor = useFrameProcessor(frame => {
     'worklet';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    primaryColor.value = frame
-    console.log(frame);
-=======
-    console.log(frame);
-    const test = __getColorPalette(frame)
-    console.log(test);
->>>>>>> shlomo
-=======
-=======
->>>>>>> shlomo
     var array = __getColorPalette(frame);
     var colors = [];
     while (array.length > 0) {
@@ -134,42 +92,14 @@ const App = () => {
       .slice(0, 5);
 
     if (colors.length < 5) return;
-    console.log(colors)
-    firstColor.value = colors[0].rgb;
-<<<<<<< HEAD
-    secondColor.value =
-      colors[1].rgb === undefined ? DEFAULT_COLOR : colors[1].rgb;
-    thirdColor.value =
-      colors[2].rgb === undefined ? DEFAULT_COLOR : colors[2].rgb;
-    fourthColor.value =
-      colors[3].rgb === undefined ? DEFAULT_COLOR : colors[3].rgb;
-    fifthColor.value =
-      colors[4].rgb === undefined ? DEFAULT_COLOR : colors[4].rgb;
-<<<<<<< HEAD
->>>>>>> shlomo
-=======
->>>>>>> shlomo
-=======
     secondColor.value = colors[1].rgb;
     thirdColor.value = colors[2].rgb;
     fourthColor.value = colors[3].rgb;
     fifthColor.value = colors[4].rgb;
->>>>>>> shlomo
   }, []);
 
   useEffect(() => {
     getPermissions();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    console.log(primaryColor)
-=======
-    // console.log(firstColor)
->>>>>>> shlomo
-=======
->>>>>>> shlomo
-=======
->>>>>>> shlomo
   }, []);
 
   if (device == null)
@@ -181,30 +111,15 @@ const App = () => {
   else
     return (
       <SafeAreaView style={styles.appContainer}>
-<<<<<<< HEAD
         <Camera
           style={styles.cameraContainer}
           device={device}
           isActive={true}
-<<<<<<< HEAD
-          // frameProcessor={frameProcessor}
-=======
           frameProcessor={frameProcessor}
-<<<<<<< HEAD
-<<<<<<< HEAD
-          frameProcessorFps={1}
->>>>>>> shlomo
-=======
-=======
->>>>>>> shlomo
           frameProcessorFps={3}
           onFrameProcessorPerformanceSuggestionAvailable={
             onFrameProcessorPerformanceSuggestionAvailable
           }
-<<<<<<< HEAD
->>>>>>> shlomo
-=======
->>>>>>> shlomo
         />
         <View style={styles.infoContainer}>
           <ColorTile
@@ -233,7 +148,6 @@ const App = () => {
             animationDuration={colorAnimationDuration}
           />
         </View>
-=======
         {isAllowed && (
           <>
             <Camera
@@ -288,7 +202,6 @@ const App = () => {
             </View>
           </>
         )}
->>>>>>> shlomo
       </SafeAreaView>
     );
 };
