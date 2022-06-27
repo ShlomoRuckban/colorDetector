@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, {useEffect} from 'react';
 <<<<<<< HEAD
 import {
@@ -12,10 +13,15 @@ import {
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 >>>>>>> shlomo
 =======
+=======
+>>>>>>> shlomo
 import React, {useEffect, useState, useMemo} from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import ColorTile from './components/ColorTile';
 import {useSharedValue} from 'react-native-reanimated';
+<<<<<<< HEAD
+>>>>>>> shlomo
+=======
 >>>>>>> shlomo
 import {
   Camera,
@@ -25,8 +31,12 @@ import {
 } from 'react-native-vision-camera';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {useSharedValue} from 'react-native-reanimated'
 =======
+>>>>>>> shlomo
+=======
+const DEFAULT_COLOR = '#000000';
 >>>>>>> shlomo
 =======
 const DEFAULT_COLOR = '#000000';
@@ -66,6 +76,7 @@ const App = () => {
     'worklet';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     primaryColor.value = frame
     console.log(frame);
 =======
@@ -74,6 +85,8 @@ const App = () => {
     console.log(test);
 >>>>>>> shlomo
 =======
+=======
+>>>>>>> shlomo
     var array = __getColorPalette(frame);
     var colors = [];
     while (array.length > 0) {
@@ -118,6 +131,9 @@ const App = () => {
       colors[3].rgb === undefined ? DEFAULT_COLOR : colors[3].rgb;
     fifthColor.value =
       colors[4].rgb === undefined ? DEFAULT_COLOR : colors[4].rgb;
+<<<<<<< HEAD
+>>>>>>> shlomo
+=======
 >>>>>>> shlomo
   }, []);
 
@@ -125,9 +141,12 @@ const App = () => {
     getPermissions();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(primaryColor)
 =======
     // console.log(firstColor)
+>>>>>>> shlomo
+=======
 >>>>>>> shlomo
 =======
 >>>>>>> shlomo
@@ -151,13 +170,19 @@ const App = () => {
 =======
           frameProcessor={frameProcessor}
 <<<<<<< HEAD
+<<<<<<< HEAD
           frameProcessorFps={1}
 >>>>>>> shlomo
 =======
+=======
+>>>>>>> shlomo
           frameProcessorFps={3}
           onFrameProcessorPerformanceSuggestionAvailable={
             onFrameProcessorPerformanceSuggestionAvailable
           }
+<<<<<<< HEAD
+>>>>>>> shlomo
+=======
 >>>>>>> shlomo
         />
         <View style={styles.infoContainer}>
