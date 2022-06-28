@@ -4,8 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
-  PermissionsAndroid,
 } from 'react-native';
 import ColorTile from './components/ColorTile';
 import {useSharedValue} from 'react-native-reanimated';
